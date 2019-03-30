@@ -20,6 +20,12 @@ namespace CarBuyerTest
             Assert.IsTrue(AllElementsAreEqual(setExceptArray(0, 2000), PriceCounter.Count(10000, 8000, 1000, 1.5)));
         }
 
+        [TestMethod]
+        public void Start_price_smaller_then_car_price_should_return_correct_result()
+        {
+            Assert.IsTrue(AllElementsAreEqual(setExceptArray(6,766), PriceCounter.Count(2000, 8000, 1000, 1.5)));
+        }
+
 
         private bool AllElementsAreEqual(int[] expect, int[] actual)
         {
