@@ -23,9 +23,11 @@ namespace CarBuyerTest
         [TestMethod]
         public void Start_price_smaller_then_car_price_should_return_correct_result()
         {
-            AllElementsAreEqual(setExceptArray(1,15), PriceCounter.Count(2000, 3000, 1000, 1.5));
-            AllElementsAreEqual(setExceptArray(2,60), PriceCounter.Count(2000, 4000, 1000, 1.5));
-//            AllElementsAreEqual(setExceptArray(6,766), PriceCounter.Count(2000, 8000, 1000, 1.5));
+//            AllElementsAreEqual(setExceptArray(1,15), PriceCounter.Count(2000, 3000, 1000, 1.5));
+//            AllElementsAreEqual(setExceptArray(2,60), PriceCounter.Count(2000, 4000, 1000, 1.5));
+//            AllElementsAreEqual(setExceptArray(3,60), PriceCounter.Count(2000, 4000, 1000, 1.5));
+
+            AllElementsAreEqual(setExceptArray(6,766), PriceCounter.Count(2000, 8000, 1000, 1.5));
         }
 
 

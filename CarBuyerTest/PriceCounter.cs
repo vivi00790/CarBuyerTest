@@ -24,18 +24,26 @@ namespace CarBuyerTest
                     return new[] {monthCount, Convert.ToInt32(currentStartPrice+currentSaving - currentTargetPrice)};
                 }
 
-                currentStartPrice *= (1 - currentDepreciation);
-                currentTargetPrice *= (1 - currentDepreciation);
-                currentSaving += savingPerMonth;
-                if (monthCount != 0 && monthCount % 2 == 0)
+                if (monthCount!=0&&monthCount % 2 == 0)
                 {
-                    //currentDepreciation += 0.005;
-                    currentDepreciation *= 1.005;
+                    currentDepreciation += 0.005;
                 }
+
+                currentStartPrice *= (1 - currentDepreciation);
+
+                currentTargetPrice *= (1 - currentDepreciation);
+                if (currentStartPrice + currentSaving >= currentTargetPrice)
+                {
+                    return new[] { monthCount, Convert.ToInt32(currentStartPrice + currentSaving - currentTargetPrice) };
+                }
+
+                currentSaving += savingPerMonth;
+                //                currentStartPrice -= startPrice * currentDepreciation;
+
+                //                currentTargetPrice -=  targetStartPrice*currentDepreciation;
 
                 monthCount++;
             }
-            return new[] {(targetStartPrice - startPrice)/savingPerMonth,targetStartPrice-startPrice};
         }
     }
 }
