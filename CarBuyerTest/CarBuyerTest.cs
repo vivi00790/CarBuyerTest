@@ -10,26 +10,32 @@ namespace CarBuyerTest
         [TestMethod]
         public void Equal_start_price_and_car_price_should_return_0_0()
         {
-            Assert.IsTrue(AllElementsAreEqual(setExceptArray(0, 0), PriceCounter.Count(8000, 8000, 1000, 1.5)));
+            AllElementsAreEqual(setExceptArray(0, 0), PriceCounter.Count(8000, 8000, 1000, 1.5));
         }
 
         [TestMethod]
         public void Start_price_larger_then_car_price_should_return_0_and_priceDiff()
         {
-            Assert.IsTrue(AllElementsAreEqual(setExceptArray(0, 4000), PriceCounter.Count(12000, 8000, 1000, 1.5)));
-            Assert.IsTrue(AllElementsAreEqual(setExceptArray(0, 2000), PriceCounter.Count(10000, 8000, 1000, 1.5)));
+            AllElementsAreEqual(setExceptArray(0, 4000), PriceCounter.Count(12000, 8000, 1000, 1.5));
+            AllElementsAreEqual(setExceptArray(0, 2000), PriceCounter.Count(10000, 8000, 1000, 1.5));
         }
 
         [TestMethod]
         public void Start_price_smaller_then_car_price_should_return_correct_result()
         {
-            Assert.IsTrue(AllElementsAreEqual(setExceptArray(6,766), PriceCounter.Count(2000, 8000, 1000, 1.5)));
+            AllElementsAreEqual(setExceptArray(1,15), PriceCounter.Count(2000, 3000, 1000, 1.5));
+//            AllElementsAreEqual(setExceptArray(2,15), PriceCounter.Count(2000, 4000, 1000, 1.5));
+//            AllElementsAreEqual(setExceptArray(6,766), PriceCounter.Count(2000, 8000, 1000, 1.5));
         }
 
 
-        private bool AllElementsAreEqual(int[] expect, int[] actual)
+        private void AllElementsAreEqual(int[] expect, int[] actual)
         {
-            return expect.Where((_, i) => _ == actual[i]).Count() == actual.Length;
+            Assert.IsTrue(expect.Length == actual.Length);
+            for (int i = 0; i < expect.Length; i++)
+            {
+                Assert.AreEqual(expect[i],actual[i]);
+            }
         }
 
         private int[] setExceptArray(int expectMonth, int expectPrize)

@@ -10,9 +10,30 @@ namespace CarBuyerTest
     {
         public static int[] Count(int startPrice, int targetStartPrice, int savingPerMonth, double decreasingRate)
         {
-            if (startPrice>=targetStartPrice)
+            
+
+            var monthCount = 0;
+            double currentStartPrice = startPrice;
+            double currentTargetPrice = targetStartPrice;
+            var currentSaving = 0;
+            double currentDepreciation = decreasingRate/100;
+            while (true)
             {
-                return new[] {0, startPrice - targetStartPrice};
+                if (currentStartPrice+currentSaving>=currentTargetPrice)
+                {
+                    return new[] {monthCount, Convert.ToInt32(currentStartPrice+currentSaving - currentTargetPrice)};
+                }
+
+                currentStartPrice *= (1 - currentDepreciation);
+                currentTargetPrice *= (1 - currentDepreciation);
+                currentSaving += savingPerMonth;
+                if (monthCount != 0 && monthCount % 2 == 0)
+                {
+                    //currentDepreciation += 0.005;
+                    currentDepreciation *= 1.005;
+                }
+
+                monthCount++;
             }
             return new[] {(targetStartPrice - startPrice)/savingPerMonth,targetStartPrice-startPrice};
         }
