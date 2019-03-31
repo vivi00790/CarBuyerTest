@@ -54,6 +54,12 @@ namespace CarBuyerTest
             AllElementsAreEqual(setExceptArray(6, 0), _priceCounter.Count(1000000, 1000001, 0, 98.5));
         }
 
+        [TestMethod]
+        public void Validate_correctness()
+        {
+            AllElementsAreEqual(setExceptArray(6,766),_priceCounter.Count(2000,8000,1000,1.5));
+        }
+
 
         private void AllElementsAreEqual(int[] expect, int[] actual)
         {
