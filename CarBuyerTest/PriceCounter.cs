@@ -9,15 +9,17 @@ namespace CarBuyerTest
 {
     class PriceCounter
     {
-        public static int[] Count(int startPrice, int targetPrice, int savingPerMonth, double startDepreciation)
+
+        internal double DepreciationIncreasing { get; set; } = 0.005;
+        public int[] Count(int startPrice, int targetPrice, int savingPerMonth, double startDepreciation)
         {
-            
+
 
             var monthCount = 0;
             double currentStartPrice = startPrice;
             double currentTargetPrice = targetPrice;
             var currentSaving = 0;
-            var currentDepreciation = startDepreciation/100;
+            var currentDepreciation = startDepreciation / 100;
 
             bool CanBuy()
             {
@@ -26,21 +28,21 @@ namespace CarBuyerTest
 
             bool IsEvenMonth()
             {
-                return  monthCount % 2 == 1;
+                return monthCount % 2 == 1;
             }
 
-            
+
             while (true)
             {
-                
+
                 if (CanBuy())
                 {
-                    return new[] {monthCount, Convert.ToInt32(currentStartPrice+currentSaving - currentTargetPrice)};
+                    return new[] {monthCount, Convert.ToInt32(currentStartPrice + currentSaving - currentTargetPrice)};
                 }
 
                 if (IsEvenMonth())
                 {
-                    currentDepreciation += 0.005;
+                    currentDepreciation += DepreciationIncreasing;
                 }
 
                 currentStartPrice *= (1 - currentDepreciation);
@@ -51,9 +53,11 @@ namespace CarBuyerTest
 
                 if (CanBuy())
                 {
-                    return new[] { monthCount, Convert.ToInt32(currentStartPrice + currentSaving - currentTargetPrice) };
+                    return new[] {monthCount, Convert.ToInt32(currentStartPrice + currentSaving - currentTargetPrice)};
                 }
             }
         }
+
+        
     }
 }

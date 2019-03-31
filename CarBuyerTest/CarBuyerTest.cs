@@ -7,26 +7,35 @@ namespace CarBuyerTest
     [TestClass]
     public class CarBuyerTest
     {
+        private PriceCounter _priceCounter;
+
+        [TestInitialize]
+        public void SetUp()
+        {
+            _priceCounter = new PriceCounter();
+        }
+
         [TestMethod]
         public void Start_and_target_price_are_equal_should_return_0_0()
         {
-            AllElementsAreEqual(setExceptArray(0, 0), PriceCounter.Count(8000, 8000, 1000, 1.5));
+            AllElementsAreEqual(setExceptArray(0, 0), _priceCounter.Count(8000, 8000, 1000, 1.5));
         }
 
         [TestMethod]
         public void Start_larger_then_target_price_should_return_0_priceDiff()
         {
-            AllElementsAreEqual(setExceptArray(0, 4000), PriceCounter.Count(12000, 8000, 1000, 1.5));
-            AllElementsAreEqual(setExceptArray(0, 2000), PriceCounter.Count(10000, 8000, 1000, 1.5));
+            AllElementsAreEqual(setExceptArray(0, 4000), _priceCounter.Count(12000, 8000, 1000, 1.5));
+            AllElementsAreEqual(setExceptArray(0, 2000), _priceCounter.Count(10000, 8000, 1000, 1.5));
         }
 
         [TestMethod]
         public void Validate_saving()
         {
-            AllElementsAreEqual(setExceptArray(1, 0),PriceCounter.Count(1000,2000,1000,0));
-            AllElementsAreEqual(setExceptArray(20, 0),PriceCounter.Count(1000,2000,50,0));
+            _priceCounter.DepreciationIncreasing = 0;
+            AllElementsAreEqual(setExceptArray(1, 0),_priceCounter.Count(1000,2000,1000,0));
+            AllElementsAreEqual(setExceptArray(2, 0),_priceCounter.Count(1000,3000,1000,0));
+            AllElementsAreEqual(setExceptArray(3, 0),_priceCounter.Count(1000,4000,1000,0));
         }
-
 
         private void AllElementsAreEqual(int[] expect, int[] actual)
         {
