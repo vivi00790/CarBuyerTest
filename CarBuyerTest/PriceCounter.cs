@@ -44,11 +44,8 @@ namespace CarBuyerTest
                 }
 
                 currentStartPrice *= (1 - currentDepreciation);
-
                 currentTargetPrice *= (1 - currentDepreciation);
-//                currentStartPrice -= startPriceOld * currentDepreciation;
-//
-//                currentTargetPrice -=  startPriceNew*currentDepreciation;
+
                 currentSaving += savingPerMonth;
                 monthCount++;
 
