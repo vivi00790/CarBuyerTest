@@ -46,6 +46,14 @@ namespace CarBuyerTest
             AllElementsAreEqual(setExceptArray(4, 0), _priceCounter.Count(128, 256, 2, 50));
         }
 
+        [TestMethod]
+        public void Validate_depreciation_increase()
+        {
+            AllElementsAreEqual(setExceptArray(2, 0), _priceCounter.Count(1000000, 1000001, 0, 99.5));
+            AllElementsAreEqual(setExceptArray(4, 0), _priceCounter.Count(1000000, 1000001, 0, 99));
+            AllElementsAreEqual(setExceptArray(6, 0), _priceCounter.Count(1000000, 1000001, 0, 98.5));
+        }
+
 
         private void AllElementsAreEqual(int[] expect, int[] actual)
         {
