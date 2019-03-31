@@ -8,26 +8,23 @@ namespace CarBuyerTest
     public class CarBuyerTest
     {
         [TestMethod]
-        public void Equal_start_price_and_car_price_should_return_0_0()
+        public void Start_and_target_price_are_equal_should_return_0_0()
         {
             AllElementsAreEqual(setExceptArray(0, 0), PriceCounter.Count(8000, 8000, 1000, 1.5));
         }
 
         [TestMethod]
-        public void Start_price_larger_then_car_price_should_return_0_and_priceDiff()
+        public void Start_larger_then_target_price_should_return_0_priceDiff()
         {
             AllElementsAreEqual(setExceptArray(0, 4000), PriceCounter.Count(12000, 8000, 1000, 1.5));
             AllElementsAreEqual(setExceptArray(0, 2000), PriceCounter.Count(10000, 8000, 1000, 1.5));
         }
 
         [TestMethod]
-        public void Start_price_smaller_then_car_price_should_return_correct_result()
+        public void Validate_saving()
         {
-//            AllElementsAreEqual(setExceptArray(1,15), PriceCounter.Count(2000, 3000, 1000, 1.5));
-//            AllElementsAreEqual(setExceptArray(2,60), PriceCounter.Count(2000, 4000, 1000, 1.5));
-//            AllElementsAreEqual(setExceptArray(3,60), PriceCounter.Count(2000, 4000, 1000, 1.5));
-
-            AllElementsAreEqual(setExceptArray(6,766), PriceCounter.Count(2000, 8000, 1000, 1.5));
+            AllElementsAreEqual(setExceptArray(1, 0),PriceCounter.Count(1000,2000,1000,0));
+            AllElementsAreEqual(setExceptArray(20, 0),PriceCounter.Count(1000,2000,50,0));
         }
 
 
