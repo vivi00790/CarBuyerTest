@@ -42,8 +42,8 @@ namespace CarBuyerTest
         {
             _priceCounter.DepreciationIncreasing = 0;
             AllElementsAreEqual(setExceptArray(1, 0), _priceCounter.Count(4, 8, 2, 50));
-            AllElementsAreEqual(setExceptArray(2, 0), _priceCounter.Count(8, 16, 2, 50));
-            AllElementsAreEqual(setExceptArray(3, 0), _priceCounter.Count(16, 32, 2, 50));
+            AllElementsAreEqual(setExceptArray(2, 0), _priceCounter.Count(16, 32, 2, 50));
+            AllElementsAreEqual(setExceptArray(4, 0), _priceCounter.Count(128, 256, 2, 50));
         }
 
 
